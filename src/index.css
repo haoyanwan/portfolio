@@ -1,13 +1,111 @@
-body {
+/* Navigation Styles */
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 5vh 7vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.nav-brand {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+  opacity: 0.6;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+/* Existing styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0rem;
+  overflow: hidden;
+}
+
+#root {
+  background-color: black;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.MainLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  height: 300vh;
+  width: 100vw;
+}
+
+.breakSection {
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.breakSection#hero {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.breakSection#track {
+  padding-left: 40%;
+}
+
+h1 {
+  color: white;
+  align-self: flex-start;
+}
+
+p {
+  color: white;
+  align-self: flex-start;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

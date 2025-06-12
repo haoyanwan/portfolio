@@ -1,0 +1,28 @@
+.image_track {
+    display: flex;
+    align-items: flex-end;
+    gap: 3vmin;
+    transition: transform 1.3s cubic-bezier(.17, .81, .26, .87);
+    height: 52vmin;
+    overflow: hidden;
+    transform: translateX(50%);
+}
+
+.image_track_item {
+    width: 30vmin;
+    height: 46vmin;
+    object-fit: cover;
+    object-position: 0% 50%;
+    transition:
+        object-position 1.3s cubic-bezier(.17, .81, .26, .87),
+        width 0.7s cubic-bezier(.17, .81, .26, .87),
+        height 0.7s cubic-bezier(.17, .81, .26, .87);
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    user-select: none;
+}
+
+.image_track_item:hover {
+    width: 34vmin !important;
+    height: 52vmin !important;
+}
