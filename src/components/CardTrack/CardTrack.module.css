@@ -8,6 +8,27 @@
     transform: translateX(50%);
 }
 
+.title {
+    justify-self: center;
+    display: inline-block;
+    color: white; 
+    font-size: 4.5vmin;
+    font-weight: 800;
+}
+
+.cardCounter {
+    color: white;
+    align-self: center;
+    position: absolute; 
+    font-size: 2.5vmin;
+    font-weight: 800;
+    bottom: 5vh;
+    left: 0; 
+    right: 0; 
+    margin-inline: auto; 
+    width: fit-content;
+}
+
 .image_track_item {
     width: 30vmin;
     height: 46vmin;

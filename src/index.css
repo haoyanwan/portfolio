@@ -71,9 +71,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: start;
+  align-items: center;
   height: 300vh;
   width: 100vw;
+  background: rgb(38, 38, 38);
 }
 
 .breakSection {
@@ -82,6 +83,9 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: black;
 }
 
 .breakSection#hero {
@@ -93,7 +97,7 @@ body {
 }
 
 .breakSection#track {
-  padding-left: 40%;
+  padding-left: 0%;
 }
 
 h1 {

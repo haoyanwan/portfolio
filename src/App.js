@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import CardTrack from './components/CardTrack';
-import Hero from './components/Hero';
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+import CardTrack from "./components/CardTrack";
+import Hero from "./components/Hero";
 
 function App() {
   const [virtualScrollY, setVirtualScrollY] = useState(0);
@@ -8,15 +8,22 @@ function App() {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   // Configuration object for scroll behavior and breakpoints
-  const scrollConfig = useMemo(() => ({
-    maxVirtualScroll: windowHeight * 2.75,
-    breakpoints: [
-      {
-        virtualRange: [windowHeight * 0.75, windowHeight * 2.75],
-        name: 'card-scroll-phase'
-      }
-    ]
-  }), [windowHeight]);
+  const scrollConfig = useMemo(
+    () => ({
+      maxVirtualScroll: windowHeight * 2.75,
+      breakpoints: [
+        {
+          virtualRange: [windowHeight * 0, windowHeight * 0.75],
+          name: "static-text",
+        },
+        {
+          virtualRange: [windowHeight * 1.75, windowHeight * 3.75],
+          name: "card-scroll-phase",
+        },
+      ],
+    }),
+    [windowHeight]
+  );
 
   // Updates window height on resize
   const handleResize = useCallback(() => {
@@ -24,8 +31,8 @@ function App() {
   }, []);
 
   // Smoothly animates scroll to target position using requestAnimationFrame
-  const smoothScrollTo = useCallback((targetY, duration = 500) => {
-    const element = document.getElementById('root');
+  const smoothScrollTo = useCallback((targetY, duration = 200) => {
+    const element = document.getElementById("root");
     const startY = element.scrollTop;
     const distance = targetY - startY;
     const startTime = Date.now();
@@ -35,7 +42,7 @@ function App() {
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
 
-      element.scrollTo({ top: startY + (distance * eased) });
+      element.scrollTo({ top: startY + distance * eased });
 
       if (progress < 1) {
         requestAnimationFrame(scroll);
@@ -46,96 +53,110 @@ function App() {
   }, []);
 
   // Converts virtual scroll position to actual scroll position based on breakpoints
-  const calculateActualScroll = useCallback((virtualY) => {
-    let actualY = virtualY;
-    let totalVirtualOffset = 0;
+  const calculateActualScroll = useCallback(
+    (virtualY) => {
+      let actualY = virtualY;
+      let totalVirtualOffset = 0;
 
-    for (const breakpoint of scrollConfig.breakpoints) {
-      const [start, end] = breakpoint.virtualRange;
-      if (virtualY >= start && virtualY <= end) {
-        const dynamicActualLock = start - totalVirtualOffset;
-        return Math.max(0, dynamicActualLock);
-      } else if (virtualY > end) {
-        totalVirtualOffset += (end - start);
+      for (const breakpoint of scrollConfig.breakpoints) {
+        const [start, end] = breakpoint.virtualRange;
+        if (virtualY >= start && virtualY <= end) {
+          const dynamicActualLock = start - totalVirtualOffset;
+          return Math.max(0, dynamicActualLock);
+        } else if (virtualY > end) {
+          totalVirtualOffset += end - start;
+        }
       }
-    }
 
-    actualY = virtualY - totalVirtualOffset;
-    return Math.max(0, actualY);
-  }, [scrollConfig]);
+      actualY = virtualY - totalVirtualOffset;
+      return Math.max(0, actualY);
+    },
+    [scrollConfig]
+  );
 
   // Handles wheel events and updates virtual/actual scroll positions
-  const handleWheel = useCallback((e) => {
-    e.preventDefault();
+  const handleWheel = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    setVirtualScrollY(prevVirtual => {
-      const newVirtual = Math.min(
-        Math.max(0, prevVirtual + e.deltaY),
-        scrollConfig.maxVirtualScroll
-      );
-      const newActual = calculateActualScroll(newVirtual);
-      setActualScrollY(newActual);
-      smoothScrollTo(newActual);
-      return newVirtual;
-    });
-  }, [calculateActualScroll, scrollConfig.maxVirtualScroll, smoothScrollTo]);
+      setVirtualScrollY((prevVirtual) => {
+        const newVirtual = Math.min(
+          Math.max(0, prevVirtual + e.deltaY),
+          scrollConfig.maxVirtualScroll
+        );
+        const newActual = calculateActualScroll(newVirtual);
+        setActualScrollY(newActual);
+        if (e.deltaY > 50) {
+          // Smooth scroll to new position
+          smoothScrollTo(newActual);
+        } else {
+          // probably mac or mouse track scrolling
+          let element = document.getElementById("root");
+          element.scrollTo({ top: newActual });
+        }
+        return newVirtual;
+      });
+    },
+    [calculateActualScroll, scrollConfig.maxVirtualScroll, smoothScrollTo]
+  );
 
   // Finds which breakpoint the current virtual scroll position falls within
   const getCurrentBreakpoint = useCallback(() => {
-    return scrollConfig.breakpoints.find(bp =>
-      virtualScrollY >= bp.virtualRange[0] && virtualScrollY <= bp.virtualRange[1]
+    return scrollConfig.breakpoints.find(
+      (bp) =>
+        virtualScrollY >= bp.virtualRange[0] &&
+        virtualScrollY <= bp.virtualRange[1]
     );
   }, [scrollConfig.breakpoints, virtualScrollY]);
 
   // Set up resize listener
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [handleResize]);
 
   // Set up wheel event listener
   useEffect(() => {
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, [handleWheel]);
 
-   // Navigation handler for setting virtual scroll position
-  const navigateToSection = useCallback((targetVirtualY) => {
-    setVirtualScrollY(targetVirtualY);
-    const newActual = calculateActualScroll(targetVirtualY);
-    setActualScrollY(newActual);
-    smoothScrollTo(newActual);
-  }, [calculateActualScroll, smoothScrollTo]);
+  // Navigation handler for setting virtual scroll position
+  const navigateToSection = useCallback(
+    (targetVirtualY) => {
+      setVirtualScrollY(targetVirtualY);
+      const newActual = calculateActualScroll(targetVirtualY);
+      setActualScrollY(newActual);
+      smoothScrollTo(newActual);
+    },
+    [calculateActualScroll, smoothScrollTo]
+  );
+
 
   return (
     <div className="MainLayout">
       {/* Navigation Bar */}
       <nav className="navigation">
-        <div className="nav-brand">
-          PORTFOLIO
-        </div>
-        
-         <div className="nav-links">
-          <button 
-            className="nav-link" 
-            onClick={() => navigateToSection(0)}
-          >
+        <div className="nav-brand">HAOYAN PORTFOLIO</div>
+
+        <div className="nav-links">
+          <button className="nav-link" onClick={() => navigateToSection(0)}>
             Home
           </button>
-          <button 
-            className="nav-link" 
+          <button
+            className="nav-link"
             onClick={() => navigateToSection(windowHeight * 0.75)}
           >
             Work
           </button>
-          <button 
-            className="nav-link" 
+          <button
+            className="nav-link"
             onClick={() => navigateToSection(windowHeight * 1.5)}
           >
             About
           </button>
-          <button 
-            className="nav-link" 
+          <button
+            className="nav-link"
             onClick={() => navigateToSection(windowHeight * 2.5)}
           >
             Contact
@@ -144,7 +165,11 @@ function App() {
       </nav>
 
       <div className="breakSection" id="hero">
-        <Hero />
+        <Hero
+          virtualScrollY={virtualScrollY}
+          actualScrollY={actualScrollY}
+          currentBreakpoint={getCurrentBreakpoint()}
+        />
       </div>
 
       <div className="breakSection" id="track">
@@ -156,22 +181,23 @@ function App() {
       </div>
 
       {/* Debug info */}
-      <div style={{
-        position: 'fixed',
-        top: '90vh',
-        left: '0vw',
-        background: 'rgba(0,0,0,0.8)',
-        color: 'white',
-        padding: '15px',
-        borderRadius: '5px',
-        fontFamily: 'monospace',
-        fontSize: '12px',
-        zIndex: 1000
-      }}>
+      <div
+        style={{
+          position: "fixed",
+          bottom: "0vh",
+          left: "0vw",
+          color: "white",
+          padding: "15px",
+          borderRadius: "5px",
+          fontFamily: "monospace",
+          fontSize: "12px",
+          zIndex: 1000,
+        }}
+      >
         <div>Virtual: {Math.round(virtualScrollY)}</div>
         <div>Actual: {Math.round(actualScrollY)}</div>
         <div>Window Height: {windowHeight}</div>
-        <div>Breakpoint: {getCurrentBreakpoint()?.name || 'none'}</div>
+        <div>Breakpoint: {getCurrentBreakpoint()?.name || "none"}</div>
         <div>Recruiter: hopefully watching ...</div>
       </div>
     </div>
