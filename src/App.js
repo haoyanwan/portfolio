@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   // Smoothly animates scroll to target position using requestAnimationFrame
-  const smoothScrollTo = useCallback((targetY, duration = 200) => {
+  const smoothScrollTo = useCallback((targetY, duration = 500) => {
     const element = document.getElementById("root");
     const startY = element.scrollTop;
     const distance = targetY - startY;
@@ -78,17 +78,18 @@ function App() {
   const handleWheel = useCallback(
     (e) => {
       e.preventDefault();
-
+      const deltaY = e.deltaY / 2;
       setVirtualScrollY((prevVirtual) => {
         const newVirtual = Math.min(
-          Math.max(0, prevVirtual + e.deltaY),
+          Math.max(0, prevVirtual + deltaY),
           scrollConfig.maxVirtualScroll
         );
         const newActual = calculateActualScroll(newVirtual);
         setActualScrollY(newActual);
-        if (e.deltaY > 50) {
+        if (Math.abs(deltaY) >= 25) {
           // Smooth scroll to new position
           smoothScrollTo(newActual);
+          console.log("Smooth scroll to:", newActual);
         } else {
           // probably mac or mouse track scrolling
           let element = document.getElementById("root");

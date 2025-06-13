@@ -12,7 +12,8 @@ const images = [
 ];
 
 const CardTrack = (prop) => {
-  const [subText, setSubText] = useState("default");
+  const [subText, setSubText] = useState("Image 1");
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const scrollY = prop.virtualScrollY;
   const windowHeight = window.innerHeight;
 
@@ -30,8 +31,8 @@ const CardTrack = (prop) => {
   })();
 
   const zoomedObjectPosition = `${Math.min(scrollPercent, 100)}%`;
- 
-  const trackScrollPosition = scrollPercent >= 50 ? `-${scrollPercent-50}%` : `${50 - scrollPercent}%`;
+
+  const trackScrollPosition = scrollPercent >= 42.5 ? `-${scrollPercent - 42.5}%` : `${42.5 - scrollPercent}%`;
 
   const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd ? "block" : "none";
 
@@ -45,17 +46,20 @@ const CardTrack = (prop) => {
         {images.map((src, index) => (
           <img
             key={index}
-            className={styles.image_track_item}
+            className={`${styles.image_track_item} ${selectedIndex === index ? styles.selected : ''}`}
             style={{ objectPosition: zoomedObjectPosition }}
             src={src}
             alt={`item ${index + 1}`}
             draggable={false}
             onDragStart={(e) => e.preventDefault()}
-            onMouseEnter={() => setSubText(`Image ${index + 1}`)}
+            onMouseEnter={() => {
+              setSubText(`Image ${index + 1}`);
+              setSelectedIndex(index);
+            }}
           />
         ))}
       </div>
-      <div className={styles.cardCounter} style={{display: displayVisible}}>
+      <div className={styles.cardCounter} style={{ display: displayVisible }}>
         {subText}
       </div>
     </>

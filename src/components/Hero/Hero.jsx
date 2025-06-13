@@ -18,7 +18,7 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
     []
   );
 
-  const description = "Hey there I'm A Full Stack Developer. Check out my work, I make them with skill and love.";
+  const description = "Hey there my name is Haoyan Wan. I'm A Full Stack Developer. Check out my work, I make them with skill and love.";
 
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
     1
   );
   const primaryTransform = `translateY(${scrollProgress * -100 + 10}vh)`;
-  const secondaryTransform = `translateY(${(0.5 - scrollProgress) * 100}vh)`;
+  const secondaryTransform = `translateY(${Math.max((0.5 - scrollProgress) * 100, -10)}vh)`;
   const primaryOpacity = 1 - scrollProgress * 4;
   const secondaryOpacity = Math.min(scrollProgress * 2, 2 - scrollProgress * 2);
   return (
@@ -83,7 +83,7 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
         style={{ transform: secondaryTransform, opacity: secondaryOpacity }}
       >
         <h1 className={styles.name}>
-          "Made with Zero Libraries, Keeping It Simple"
+          This Website is made with Zero Libraries, Keeping It Simple
         </h1>
 
         <p className={styles.description}>except a little bit of react ...</p>
