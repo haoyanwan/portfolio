@@ -13,6 +13,7 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
       "10X Developer",
       "Haoyan Wan",
       "Vim Master",
+      "Haoyan Wan",
       "Merge Conflict Solver",
     ],
     []
@@ -70,10 +71,10 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
         className={styles.textContainer}
         style={{ transform: primaryTransform, opacity: primaryOpacity }}
       >
-        <h1 className={styles.name}>
+        <p className={styles.name}>
           {displayText}
           <span className={styles.cursor}>|</span>
-        </h1>
+        </p>
 
         <p className={styles.description}>{description}</p>
       </div>
@@ -82,7 +83,7 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
         className={styles.textContainer}
         style={{ transform: secondaryTransform, opacity: secondaryOpacity }}
       >
-        <h1 className={styles.name}>
+        <h1>
           This Website is made with Zero Libraries, Keeping It Simple
         </h1>
 

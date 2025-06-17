@@ -28,6 +28,7 @@
     right: 0;
     margin-inline: auto;
     width: fit-content;
+    transition: all 1s cubic-bezier(.1, .71, .54, .92);
 }
 
 .image_track_item {

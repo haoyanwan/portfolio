@@ -34,7 +34,7 @@ const CardTrack = (prop) => {
 
   const trackScrollPosition = scrollPercent >= 42.5 ? `-${scrollPercent - 42.5}%` : `${42.5 - scrollPercent}%`;
 
-  const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd ? "block" : "none";
+  const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd ? "translateY(0%)" : "translateY(5vh)";
 
   return (
     <>
@@ -59,7 +59,7 @@ const CardTrack = (prop) => {
           />
         ))}
       </div>
-      <div className={styles.cardCounter} style={{ display: displayVisible }}>
+      <div className={styles.cardCounter} style={{ transform: displayVisible, opacity: scrollPercent > 0 ? 1 : 0 }}>
         {subText}
       </div>
     </>

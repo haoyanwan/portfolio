@@ -163,8 +163,10 @@ function App() {
             Contact
           </button>
         </div>
+
       </nav>
 
+      {/* Main content sections */}
       <div className="breakSection" id="hero">
         <Hero
           virtualScrollY={virtualScrollY}
@@ -182,19 +184,7 @@ function App() {
       </div>
 
       {/* Debug info */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "0vh",
-          left: "0vw",
-          color: "white",
-          padding: "15px",
-          borderRadius: "5px",
-          fontFamily: "monospace",
-          fontSize: "12px",
-          zIndex: 1000,
-        }}
-      >
+      <div className="debug-info">
         <div>Virtual: {Math.round(virtualScrollY)}</div>
         <div>Actual: {Math.round(actualScrollY)}</div>
         <div>Window Height: {windowHeight}</div>
