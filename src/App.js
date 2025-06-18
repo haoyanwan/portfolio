@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import CardTrack from "./components/CardTrack";
 import Hero from "./components/Hero";
+import Navigation from "./components/Navigation";
 
 function App() {
   const [virtualScrollY, setVirtualScrollY] = useState(0);
@@ -24,6 +25,15 @@ function App() {
     }),
     [windowHeight]
   );
+
+  // Calculate dots background size based on scroll progress
+  const dotsBackgroundSize = useMemo(() => {
+    const scrollProgress = virtualScrollY / scrollConfig.maxVirtualScroll;
+    const minSize = 6;
+    const maxSize = 12;
+    const currentSize = minSize + (maxSize - minSize) * scrollProgress;
+    return `${currentSize}vmin ${currentSize}vmin`;
+  }, [virtualScrollY, scrollConfig.maxVirtualScroll]);
 
   // Updates window height on resize
   const handleResize = useCallback(() => {
@@ -133,38 +143,21 @@ function App() {
     [calculateActualScroll, smoothScrollTo]
   );
 
-
   return (
     <div className="MainLayout">
+      {/* Dots Background Overlay with dynamic sizing */}
+      <div
+        className="dots-background"
+        style={{
+          backgroundSize: dotsBackgroundSize
+        }}
+      ></div>
+
       {/* Navigation Bar */}
-      <nav className="navigation">
-        <div className="nav-brand">HAOYAN PORTFOLIO</div>
-
-        <div className="nav-links">
-          <button className="nav-link" onClick={() => navigateToSection(0)}>
-            Home
-          </button>
-          <button
-            className="nav-link"
-            onClick={() => navigateToSection(windowHeight * 0.75)}
-          >
-            Work
-          </button>
-          <button
-            className="nav-link"
-            onClick={() => navigateToSection(windowHeight * 1.5)}
-          >
-            About
-          </button>
-          <button
-            className="nav-link"
-            onClick={() => navigateToSection(windowHeight * 2.5)}
-          >
-            Contact
-          </button>
-        </div>
-
-      </nav>
+      <Navigation
+        onNavigate={navigateToSection}
+        windowHeight={windowHeight}
+      />
 
       {/* Main content sections */}
       <div className="breakSection" id="hero">

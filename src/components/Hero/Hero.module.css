@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   align-self: center;
-  transition: all 0.3s ease-in-out;
+  transition: all 1.3s cubic-bezier(.17, .81, .26, .87);
 }
 
 .description {
