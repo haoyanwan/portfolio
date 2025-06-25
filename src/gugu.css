@@ -160,13 +160,13 @@
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  width: calc(28% - 2rem);
+  width: calc(30% - 2rem);
   aspect-ratio: 3/4;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 }
 
 .product-image-container {
@@ -190,6 +190,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  flex-shrink: 1;
 }
 
 .product-name {
@@ -203,7 +204,7 @@
 .product-description {
   font-size: 1.4vmin;
   color: #666;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   flex-grow: 1;
   font-family: 'ZCOOL KuaiLe', sans-serif;
 }
@@ -225,140 +226,3 @@
   background: #555;
 }
 
-/* Footer Styles */
-.footer {
-  position: relative;
-  background-color: #333;
-  color: #fff;
-  padding: 4rem 10vw;
-  font-family: 'ZCOOL KuaiLe', sans-serif;
-  z-index: 15;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 200px;
-  margin-bottom: 1.5rem;
-}
-
-.footer-title {
-  font-size: 1.8vmin;
-  margin-bottom: 1.5rem;
-  color: #fff;
-  font-weight: 600;
-}
-
-.footer-text {
-  font-size: 1.4vmin;
-  color: #ccc;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.footer-icon {
-  margin-right: 0.5rem;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.8rem;
-}
-
-.footer-links a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1.4vmin;
-}
-
-.footer-links a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.social-icons {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.social-icons a {
-  color: #ccc;
-  font-size: 1.8vmin;
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: #fff;
-}
-
-.footer-subscribe {
-  font-size: 1.4vmin;
-  color: #ccc;
-  margin-bottom: 1rem;
-}
-
-.subscribe-form {
-  display: flex;
-}
-
-.subscribe-form input {
-  flex: 1;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  font-size: 1.2vmin;
-}
-
-.subscribe-form button {
-  padding: 0.8rem 1.5rem;
-  background-color: #555;
-  color: white;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 1.2vmin;
-}
-
-.subscribe-form button:hover {
-  background-color: #777;
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid #555;
-  font-size: 1.2vmin;
-  color: #999;
-}
-
-.legal-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.legal-links a {
-  color: #999;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.legal-links a:hover {
-  color: #fff;
-}
