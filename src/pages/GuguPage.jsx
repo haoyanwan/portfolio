@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo } from "react";
 import TopBar from "../components/Gugu/TopBar/topbar";
 import Slogan from "../components/Gugu/Slogan/slogan";
 import ProductsSection from "../components/Gugu/ProductSection/productSection";
-
+import FeatureCard from "../components/Gugu/FeatureCard/featureCard";
+import ScrollPrompt from "../components/Gugu/ScrollPrompt/scrollPrompt"
 const GuguPage = () => {
   const [activeNav, setActiveNav] = useState("网站主页");
   const [virtualScrollY, setVirtualScrollY] = useState(0);
@@ -67,7 +68,7 @@ const GuguPage = () => {
     const progress = Math.min(virtualScrollY / windowHeight, 1);
     return {
       transform: `translateY(${0 - progress * 100}vh)`,
-      opacity: (1 - progress * 3)
+      opacity: (1 - progress * 6)
     };
   }, [virtualScrollY, windowHeight]);
 
@@ -88,7 +89,10 @@ const GuguPage = () => {
     <div className="gugu-page" style={{ '--bg-image': `url(${img})` }}>
       <TopBar activeNav={activeNav} handleNavClick={handleNavClick} />
       <Slogan style={sloganStyle} />
+      <FeatureCard virtualScrollY={virtualScrollY} windowHeight={windowHeight} />
       <ProductsSection style={veilStyle} products={products} />
+      <ScrollPrompt style={sloganStyle}/>
+
     </div>
   );
 };

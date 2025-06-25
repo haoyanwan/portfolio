@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Maobi';
+  src: url('./fonts/maobi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
 .gugu-page {
     display: flex;
     height: 100vh;
@@ -11,18 +19,24 @@
     position: relative;
 }
 
-/* Top Bar Container */
+/* Full-width Top Bar with Glassmorphism */
 .top-bar {
     position: absolute;
-    top: 4vh;
-    left: 10vw;
-    right: 10vw;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-        z-index: 20;
-
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1.5vh 5vw; /* Horizontal padding matches your original layout */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
 }
+
 
 /* Company Header (Logo + Name) */
 .company-header {
@@ -83,7 +97,7 @@
     transition: all 0.3s ease;
     position: relative;
     top: 18vh;
-    left: 10vw;
+    left: 5vw;
     display: flex;
     flex-direction: column;
 }
@@ -103,6 +117,83 @@
     color: #333333;
     font-family: 'ZCOOL KuaiLe', sans-serif;
 }
+
+
+/* Feature Cards Container */
+.feature-card-container {
+  position: absolute;
+  top: 22vh;
+  left: 50vw;
+  width: 45vw;
+  gap: 2vh;
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  transition: all 0.3s ease;
+}
+
+/* Individual Feature Card */
+.feature-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1.2vw;
+  box-shadow: 0 0.8vh 3.2vw rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  backdrop-filter: blur(0.8vh);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 38vh; /* Fixed height using vh */
+  width: 14vw; /* Fixed width using vw */
+
+}
+
+.feature-image-container {
+  height: 27vh;
+  overflow: hidden;
+}
+
+.feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.feature-card:hover .feature-image {
+  transform: scale(1.05);
+}
+
+.feature-content {
+  padding: 1.5vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Feature Title Bubble */
+.feature-bubble {
+  background: #778cff;
+  color: white;
+  padding: 0.6vh 1.2vw;
+  border-radius: 1.6vw;
+  font-size: 1.4vh;
+  font-weight: 600;
+  margin-bottom: 1vh;
+  align-self: flex-start;
+  box-shadow: 0 0.2vh 0.8vw rgba(0, 0, 0, 0.1);
+}
+
+/* Feature Description */
+.feature-description {
+  font-size: 1.3vh;
+  color: #555;
+  margin-bottom: 1.5vh;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+
 
 /* Main Company Products */
 
@@ -146,7 +237,7 @@
     top: 15vh;
     left: 10vw;
     right: 10vw;
-    margin-top: 5vmin;
+    margin-top: 2vmin;
     display: flex;
     flex-wrap: wrap;
     gap: 2vmin; 
@@ -226,3 +317,56 @@
   background: #555;
 }
 
+/* scroll prompt */
+.scroll-prompt-container {
+  position: relative;
+  width: 20vmin;
+  top: 48vh;
+  left: 50%;
+  z-index: 1000;
+  animation: float 2s ease-in-out infinite;
+}
+
+.scroll-prompt-bubble {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 1.5vmin;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-prompt-arrow {
+  margin-top: 8px;
+  font-size: 2vmin;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -5px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
