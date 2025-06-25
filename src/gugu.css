@@ -1,0 +1,364 @@
+.gugu-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    color: black;
+    flex-direction: column;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Top Bar Container */
+.top-bar {
+    position: absolute;
+    top: 4vh;
+    left: 10vw;
+    right: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        z-index: 20;
+
+}
+
+/* Company Header (Logo + Name) */
+.company-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.company-title {
+    font-size: 3vmin;
+    font-weight: 500;
+    color: #333333;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+
+
+/* Navigation Bar */
+.nav-list {
+    display: flex;
+    gap: 2vw;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item a {
+    font-size: 1.5vmin;
+    font-weight: 500;
+    color: #757575;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.nav-item a:hover {
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.nav-item a.active {
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* Main Company Slogan */
+.company-slogan-group {
+    transition: all 0.3s ease;
+    position: relative;
+    top: 18vh;
+    left: 10vw;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.company-slogan {
+    font-size: 10vmin;
+    font-weight: 400;
+    color: #333333;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+.company-description {
+    font-size: 3vmin;
+    font-weight: 500;
+    margin-top: 2vmin;
+    color: #333333;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+/* Main Company Products */
+
+.company-product-group {
+    transition: all 0.3s ease;
+    position: relative;
+    top: 12vh;
+    left: 10vw;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.company-product {
+    font-size: 8vmin;
+    font-weight: 400;
+    color: #333333;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+
+.veil {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+    transition: all 0.3s ease;
+    will-change: transform, backdrop-filter, opacity;
+    pointer-events: none;
+    /* Allows clicks to pass through */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Products Grid */
+.products-grid {
+    position: relative;
+    top: 15vh;
+    left: 10vw;
+    right: 10vw;
+    margin-top: 5vmin;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vmin; 
+    width: 80%;
+    justify-content: space-between;
+}
+
+/* Product Card Styling */
+.product-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: calc(28% - 2rem);
+  aspect-ratio: 3/4;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image-container {
+  height: 70%;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.8vmin;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+.product-description {
+  font-size: 1.4vmin;
+  color: #666;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+.product-button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2vmin;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+}
+
+.product-button:hover {
+  background: #555;
+}
+
+/* Footer Styles */
+.footer {
+  position: relative;
+  background-color: #333;
+  color: #fff;
+  padding: 4rem 10vw;
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+  z-index: 15;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-title {
+  font-size: 1.8vmin;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer-text {
+  font-size: 1.4vmin;
+  color: #ccc;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.footer-icon {
+  margin-right: 0.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.4vmin;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons a {
+  color: #ccc;
+  font-size: 1.8vmin;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.footer-subscribe {
+  font-size: 1.4vmin;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.subscribe-form {
+  display: flex;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 1.2vmin;
+}
+
+.subscribe-form button {
+  padding: 0.8rem 1.5rem;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.2vmin;
+}
+
+.subscribe-form button:hover {
+  background-color: #777;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid #555;
+  font-size: 1.2vmin;
+  color: #999;
+}
+
+.legal-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legal-links a {
+  color: #999;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+  color: #fff;
+}

@@ -31,7 +31,7 @@
 .nav-link {
   color: white;
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
   opacity: 0.6;
   background: none;
@@ -47,6 +47,15 @@
 
 .nav-link:hover {
   opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px; /* Space between text and underline */
+}
+
+.nav-link.active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px; /* Space between text and underline */
+  text-decoration-thickness: 2px; /* Thickness of the underline */
 }
 
 /* Existing styles */
@@ -59,7 +68,6 @@ body {
 }
 
 #root {
-  background-color: black;
   overflow-y: scroll;
   scrollbar-width: none;
   overflow-x: hidden;
@@ -68,6 +76,7 @@ body {
 }
 
 .MainLayout {
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -130,16 +139,16 @@ body {
   transition: background-size 1.3s cubic-bezier(.17, .81, .26, .87)
 }
 
-h1 {
+.MainLayout h1 {
   color: white;
   align-self: flex-start;
 }
 
-p {
+.MainLayout p {
   color: white;
   align-self: flex-start;
 }
 
-code {
+.MainLayout code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

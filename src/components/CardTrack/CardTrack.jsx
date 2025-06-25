@@ -1,5 +1,6 @@
 import styles from "./CardTrack.module.css";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { getScrollConfig } from "../../utils/scrollConfig";
 
 const images = [
   "https://images.unsplash.com/photo-1749315185949-5540f5d6549a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
@@ -16,25 +17,35 @@ const CardTrack = (prop) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const scrollY = prop.virtualScrollY;
   const windowHeight = window.innerHeight;
+  
+  // Get scroll config
+  const scrollConfig = useMemo(() => getScrollConfig(windowHeight), [windowHeight]);
 
-  // Define the virtual range for the card scroll phase
-  const buffer = windowHeight * 0; // 10% buffer
-  const scrollRangeStart = windowHeight * 1.75 + buffer;
-  const scrollRangeEnd = windowHeight * 3.75 - buffer;
+  // Get the card scroll phase breakpoint from config
+  const cardScrollBreakpoint = scrollConfig.breakpoints.find(
+    bp => bp.name === "card-scroll-phase"
+  );
+
+  // Use the breakpoint's virtual range
+  const [scrollRangeStart, scrollRangeEnd] = cardScrollBreakpoint.virtualRange;
+  const buffer = windowHeight * 0; // You can adjust buffer if needed
 
   const scrollPercent = (() => {
-    if (scrollY < scrollRangeStart) return 0;
-    if (scrollY > scrollRangeEnd) return 150;
+    if (scrollY < scrollRangeStart + buffer) return 0;
+    if (scrollY > scrollRangeEnd - buffer) return 150;
     return (
-      ((scrollY - scrollRangeStart) / (scrollRangeEnd - scrollRangeStart)) * 150
+      ((scrollY - (scrollRangeStart + buffer)) / 
+       ((scrollRangeEnd - buffer) - (scrollRangeStart + buffer))) * 150
     );
   })();
 
   const zoomedObjectPosition = `${Math.min(scrollPercent, 100)}%`;
-
-  const trackScrollPosition = scrollPercent >= 42.5 ? `-${scrollPercent - 42.5}%` : `${42.5 - scrollPercent}%`;
-
-  const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd ? "translateY(0%)" : "translateY(5vh)";
+  const trackScrollPosition = scrollPercent >= 42.5 
+    ? `-${scrollPercent - 42.5}%` 
+    : `${42.5 - scrollPercent}%`;
+  const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd 
+    ? "translateY(0%)" 
+    : "translateY(5vh)";
 
   return (
     <>
@@ -59,7 +70,13 @@ const CardTrack = (prop) => {
           />
         ))}
       </div>
-      <div className={styles.cardCounter} style={{ transform: displayVisible, opacity: scrollPercent > 0 ? 1 : 0 }}>
+      <div 
+        className={styles.cardCounter} 
+        style={{ 
+          transform: displayVisible, 
+          opacity: scrollPercent > 0 ? 1 : 0 
+        }}
+      >
         {subText}
       </div>
     </>
