@@ -63,7 +63,7 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
     Math.max(virtualScrollY / scrollConfig.breakpoints[0].virtualRange[1], 0),
     1
   );
-  
+
   const primaryTransform = `translateY(${scrollProgress * -100 + 10}vh)`;
   const secondaryTransform = `translateY(${Math.max((0.5 - scrollProgress) * 100, -10)}vh)`;
   const primaryOpacity = 1 - scrollProgress * 4;
@@ -75,10 +75,10 @@ const Hero = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
         className={styles.textContainer}
         style={{ transform: primaryTransform, opacity: primaryOpacity }}
       >
-        <p className={styles.name}>
+        <div className={styles.name}>
           {displayText}
           <span className={styles.cursor}>|</span>
-        </p>
+        </div>
         <p className={styles.description}>{description}</p>
       </div>
 
