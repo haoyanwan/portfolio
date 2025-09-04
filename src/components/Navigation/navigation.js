@@ -1,7 +1,7 @@
 const Navigation = ({ onNavigate, windowHeight, tab, scrollConfig }) => {
     // Extract navigation positions from the existing scrollConfig structure
     const getNavPosition = (index) => {
-        if (!scrollConfig?.breakpoints?.[index]) return windowHeight * [0, 0.75, 1.5, 2.5][index];
+        if (!scrollConfig?.breakpoints?.[index]) return windowHeight * [0, 0.75, 2.5, 3.5][index];
         return scrollConfig.breakpoints[index].virtualRange[0];
     };
 
@@ -10,7 +10,7 @@ const Navigation = ({ onNavigate, windowHeight, tab, scrollConfig }) => {
             <div className="nav-brand">HAOYAN PORTFOLIO</div>
 
             <div className="nav-links">
-                <button 
+                <button
                     className={`nav-link ${tab === 'Home' ? 'active' : ''}`}
                     onClick={() => onNavigate(getNavPosition(0))}
                 >

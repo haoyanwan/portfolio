@@ -10,5 +10,6 @@ export const getScrollConfig = (windowHeight) => ({
       virtualRange: [windowHeight * 1.75, windowHeight * 3.75],
       name: "card-scroll-phase",
     },
+
   ],
 });
