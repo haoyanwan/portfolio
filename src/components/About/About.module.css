@@ -1,0 +1,257 @@
+.aboutContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.mainLayout {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  height: auto;
+  gap: 3rem;
+}
+
+.titleSection {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem;
+  padding-top: 0;
+}
+
+.contentSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  margin-top: 0;
+}
+
+.title span {
+  display: block;
+}
+
+.title .spacer {
+  height: 0.5em;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  transition: all 0.5s ease-out;
+}
+
+.bioSection {
+  flex: 1;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bio {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.2rem;
+}
+
+.bio:last-child {
+  margin-bottom: 0;
+}
+
+.experienceProjectsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.experienceSection {
+  padding: 0.3rem;
+}
+
+.experienceSection h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.experienceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.experienceItem {
+  padding: 0.3rem 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  padding-left: 0.8rem;
+  transition: all 0.3s ease-out;
+}
+
+.experienceItem:hover {
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+
+.experienceItem h3 {
+  font-size: 0.9rem;
+  margin-bottom: 0.1rem;
+  color: #fff;
+}
+
+.company {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.05rem;
+}
+
+.period {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.projectsSection {
+  padding: 0.3rem;
+}
+
+.projectsSection h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.projectItem {
+  padding: 0.3rem 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  padding-left: 0.8rem;
+  transition: all 0.3s ease-out;
+}
+
+.projectItem:hover {
+  border-left-color: rgba(255, 255, 255, 0.5);
+}
+
+.projectItem h3 {
+  font-size: 0.9rem;
+  margin-bottom: 0.1rem;
+  color: #fff;
+}
+
+.skillsSection {
+  width: 100%;
+  transition: all 0.5s ease-out;
+  padding-left: 0;
+  margin-left: -10rem;
+}
+
+.skillsSection h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.skillBubble {
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  cursor: default;
+}
+
+.skillBubble:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.floatingElement {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mainLayout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .titleSection {
+    padding-left: 0;
+    padding-bottom: 2rem;
+  }
+
+  .title {
+    flex-direction: row;
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .title span {
+    display: inline-block;
+  }
+
+  .title .spacer {
+    height: auto;
+    width: 0.3em;
+  }
+
+  .contentSection {
+    padding-right: 0;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .floatingElement {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -18,19 +18,19 @@ const Navigation = ({ onNavigate, windowHeight, tab, scrollConfig }) => {
                 </button>
                 <button
                     className={`nav-link ${tab === 'Work' ? 'active' : ''}`}
-                    onClick={() => onNavigate(getNavPosition(1))}
+                    onClick={() => onNavigate(getNavPosition(1) + windowHeight * 0.5)}
                 >
                     Work
                 </button>
                 <button
                     className={`nav-link ${tab === 'About' ? 'active' : ''}`}
-                    onClick={() => onNavigate(getNavPosition(2))}
+                    onClick={() => onNavigate(getNavPosition(2) + windowHeight * 0.5)}
                 >
                     About
                 </button>
                 <button
                     className={`nav-link ${tab === 'Contact' ? 'active' : ''}`}
-                    onClick={() => onNavigate(getNavPosition(3))}
+                    onClick={() => onNavigate(getNavPosition(3) + windowHeight * 0.5)}
                 >
                     Contact
                 </button>

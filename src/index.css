@@ -48,14 +48,17 @@
 .nav-link:hover {
   opacity: 1;
   text-decoration: underline;
-  text-underline-offset: 4px; /* Space between text and underline */
+  text-underline-offset: 4px;
+  /* Space between text and underline */
 }
 
 .nav-link.active {
   opacity: 1;
   text-decoration: underline;
-  text-underline-offset: 4px; /* Space between text and underline */
-  text-decoration-thickness: 2px; /* Thickness of the underline */
+  text-underline-offset: 4px;
+  /* Space between text and underline */
+  text-decoration-thickness: 2px;
+  /* Thickness of the underline */
 }
 
 /* Existing styles */
@@ -81,7 +84,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 300vh;
+  height: 400vh;
   width: 100vw;
   background: rgb(38, 38, 38);
 }

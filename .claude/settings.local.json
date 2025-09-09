@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\utils/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\pages/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components\\Hero/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components\\About/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components\\Navigation/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components\\Navigation/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\utils/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components\\CardTrack/**)",
+      "Read(/C:\\Users\\haoyan\\Documents\\Portfolio\\haoyanwan\\src\\components\\CardTrack/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

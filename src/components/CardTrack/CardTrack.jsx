@@ -2,22 +2,57 @@ import styles from "./CardTrack.module.css";
 import { useState, useMemo } from "react";
 import { getScrollConfig } from "../../utils/scrollConfig";
 
-const images = [
-  "https://images.unsplash.com/photo-1749315185949-5540f5d6549a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
-  "https://plus.unsplash.com/premium_photo-1710800032613-6e528143e119?q=80&w=1922&auto=format&fit=crop&ixlib=rb-4.1.0",
-  "https://images.unsplash.com/photo-1749390002163-0d151e3550d8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
-  "https://images.unsplash.com/photo-1749456289357-4e5cbffe9fb3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
-  "https://images.unsplash.com/photo-1749248120469-c41bf8471a48?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
-  "https://images.unsplash.com/photo-1734607947797-2a61b996fd5d?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0",
-  "https://images.unsplash.com/photo-1749310112178-d0e62994b0e0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+const cardData = [
+  {
+    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    link: "https://hzics.com/",
+    title: "HZICS",
+    description: "Landing website for small business conducting in conference management systems in Guangzhou, China"
+  },
+  {
+    image: "https://plus.unsplash.com/premium_photo-1710800032613-6e528143e119?q=80&w=1922&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "#",
+    title: "Project 2",
+    description: "Coming soon"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1749390002163-0d151e3550d8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "#",
+    title: "Project 3",
+    description: "Coming soon"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1749456289357-4e5cbffe9fb3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "#",
+    title: "Project 4",
+    description: "Coming soon"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1749248120469-c41bf8471a48?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "#",
+    title: "Project 5",
+    description: "Coming soon"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1734607947797-2a61b996fd5d?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "#",
+    title: "Project 6",
+    description: "Coming soon"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1749310112178-d0e62994b0e0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "#",
+    title: "Project 7",
+    description: "Coming soon"
+  },
 ];
 
 const CardTrack = (prop) => {
-  const [subText, setSubText] = useState("Image 1");
+  const [selectedCard, setSelectedCard] = useState(cardData[0]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const scrollY = prop.virtualScrollY;
   const windowHeight = window.innerHeight;
-  
+
   // Get scroll config
   const scrollConfig = useMemo(() => getScrollConfig(windowHeight), [windowHeight]);
 
@@ -28,23 +63,31 @@ const CardTrack = (prop) => {
 
   // Use the breakpoint's virtual range
   const [scrollRangeStart, scrollRangeEnd] = cardScrollBreakpoint.virtualRange;
-  const buffer = windowHeight * 0; // You can adjust buffer if needed
+
+  const adjustedScrollStart = scrollRangeStart - (windowHeight * 0.2);
 
   const scrollPercent = (() => {
-    if (scrollY < scrollRangeStart + buffer) return 0;
-    if (scrollY > scrollRangeEnd - buffer) return 150;
+    if (scrollY < scrollRangeStart) return 0;
+    if (scrollY > scrollRangeEnd) return 85;
     return (
-      ((scrollY - (scrollRangeStart + buffer)) / 
-       ((scrollRangeEnd - buffer) - (scrollRangeStart + buffer))) * 150
+      ((scrollY - scrollRangeStart) / (scrollRangeEnd - scrollRangeStart)) * 85
+    );
+  })();
+
+  const adjustedPercent = (() => {
+    if (scrollPercent < 0) return 0;
+    if (scrollPercent > 85) return 85;
+    return (
+      (scrollY - adjustedScrollStart) / (scrollRangeEnd - adjustedScrollStart) * 85
     );
   })();
 
   const zoomedObjectPosition = `${Math.min(scrollPercent, 100)}%`;
-  const trackScrollPosition = scrollPercent >= 42.5 
-    ? `-${scrollPercent - 42.5}%` 
+  const trackScrollPosition = scrollPercent >= 42.5
+    ? `-${scrollPercent - 42.5}%`
     : `${42.5 - scrollPercent}%`;
-  const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd 
-    ? "translateY(0%)" 
+  const displayVisible = scrollY >= scrollRangeStart && scrollY <= scrollRangeEnd
+    ? "translateY(0%)"
     : "translateY(5vh)";
 
   return (
@@ -54,30 +97,36 @@ const CardTrack = (prop) => {
         className={styles.image_track}
         style={{ transform: `translateX(${trackScrollPosition})` }}
       >
-        {images.map((src, index) => (
+        {cardData.map((card, index) => (
           <img
             key={index}
             className={`${styles.image_track_item} ${selectedIndex === index ? styles.selected : ''}`}
-            style={{ objectPosition: zoomedObjectPosition }}
-            src={src}
-            alt={`item ${index + 1}`}
+            style={{ objectPosition: zoomedObjectPosition, cursor: 'pointer' }}
+            src={card.image}
+            alt={card.title}
             draggable={false}
             onDragStart={(e) => e.preventDefault()}
             onMouseEnter={() => {
-              setSubText(`Image ${index + 1}`);
+              setSelectedCard(card);
               setSelectedIndex(index);
+            }}
+            onClick={() => {
+              if (card.link && card.link !== '#') {
+                window.open(card.link, '_blank');
+              }
             }}
           />
         ))}
       </div>
-      <div 
-        className={styles.cardCounter} 
-        style={{ 
-          transform: displayVisible, 
-          opacity: scrollPercent > 0 ? 1 : 0 
+      <div
+        className={styles.cardCounter}
+        style={{
+          transform: displayVisible,
+          opacity: adjustedPercent > 0 && adjustedPercent < 85 ? 1 : 0
         }}
       >
-        {subText}
+        <div className={styles.cardTitle}>{selectedCard.title}</div>
+        <div className={styles.cardDescription}>{selectedCard.description}</div>
       </div>
     </>
   );
