@@ -30,35 +30,6 @@ const About = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
   const contentTransform = `translateY(${(1 - scrollProgress) * 15}vh)`;
   const contentOpacity = Math.min(scrollProgress * 2 - 0.2, 1);
 
-  const skillsTransform = `translateX(${(1 - scrollProgress) * 100}%)`;
-  const skillsOpacity = Math.min(scrollProgress * 2 - 0.5, 1);
-
-  const skills = [
-    "JavaScript",
-    "HTML/CSS",
-    "Java",
-    "Python",
-    "C/C++",
-    "SQL",
-    "React",
-    "Node.js",
-    "Flask",
-    "Vite",
-    "jQuery",
-    "Supabase",
-    "FastAPI",
-    "Next.js",
-    "Git",
-    "Docker",
-    "AWS",
-    "VS Code",
-    "PostgreSQL",
-    "pandas",
-    "NumPy",
-    "Matplotlib",
-    "Framer-Motion",
-    "Redux"
-  ];
 
   const bio = [
     "I specialize in taking ideas from concept to full-fledged platforms. On the backend, I've built scalable services in Python, Node, and Go, with data pipelines designed for high throughput and reliability.",
@@ -171,31 +142,6 @@ const About = ({ virtualScrollY, actualScrollY, currentBreakpoint }) => {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div
-            className={styles.skillsSection}
-            style={{
-              transform: skillsTransform,
-              opacity: skillsOpacity
-            }}
-          >
-            <h2>Skills</h2>
-            <div className={styles.skillsGrid}>
-              {skills.map((skill, index) => (
-                <div
-                  key={index}
-                  className={styles.skillBubble}
-                  style={{
-                    animationDelay: `${index * 0.05}s`,
-                    opacity: scrollProgress > 0.4 ? 1 : 0,
-                    transform: scrollProgress > 0.4 ? 'scale(1)' : 'scale(0.8)'
-                  }}
-                >
-                  {skill}
-                </div>
-              ))}
             </div>
           </div>
         </div>

@@ -64,7 +64,7 @@
 }
 
 .bioSection {
-  flex: 1;
+  flex: 1.5;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
