@@ -4,43 +4,43 @@ import { getScrollConfig } from "../../utils/scrollConfig";
 
 const cardData = [
   {
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "https://hitems.ai/",
+    title: "HItems.AI",
+    description: "AI startup for generating customized fashion accessories using artificial intelligence"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "https://github.com/cse110-sp25-group15/cse110-sp25-group15",
+    title: "College Marketplace",
+    description: "Web application for college marketplace facilitating student commerce and exchanges"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    link: "/Fine-Tuning Pretrained Transformers.pdf",
+    title: "Transformer Research",
+    description: "Research paper on fine-tuning pretrained transformers for improved model performance"
+  },
+  {
     image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     link: "https://hzics.com/",
     title: "HZICS",
     description: "Landing website for small business conducting in conference management systems in Guangzhou, China"
   },
   {
-    image: "https://plus.unsplash.com/premium_photo-1710800032613-6e528143e119?q=80&w=1922&auto=format&fit=crop&ixlib=rb-4.1.0",
-    link: "#",
-    title: "Project 2",
-    description: "Coming soon"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1749390002163-0d151e3550d8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
-    link: "#",
-    title: "Project 3",
-    description: "Coming soon"
-  },
-  {
     image: "https://images.unsplash.com/photo-1749456289357-4e5cbffe9fb3?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
-    link: "#",
-    title: "Project 4",
-    description: "Coming soon"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1749248120469-c41bf8471a48?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
     link: "#",
     title: "Project 5",
     description: "Coming soon"
   },
   {
-    image: "https://images.unsplash.com/photo-1734607947797-2a61b996fd5d?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0",
+    image: "https://images.unsplash.com/photo-1749248120469-c41bf8471a48?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
     link: "#",
     title: "Project 6",
     description: "Coming soon"
   },
   {
-    image: "https://images.unsplash.com/photo-1749310112178-d0e62994b0e0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0",
+    image: "https://images.unsplash.com/photo-1734607947797-2a61b996fd5d?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0",
     link: "#",
     title: "Project 7",
     description: "Coming soon"
